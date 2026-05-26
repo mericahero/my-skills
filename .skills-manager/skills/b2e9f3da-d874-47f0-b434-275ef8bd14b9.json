@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "b2e9f3da-d874-47f0-b434-275ef8bd14b9",
+  "path": "asdd-code-review",
+  "path_key": "asdd-code-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

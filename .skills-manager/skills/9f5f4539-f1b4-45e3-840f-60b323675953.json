@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "9f5f4539-f1b4-45e3-840f-60b323675953",
+  "path": "asdd-requirements-review",
+  "path_key": "asdd-requirements-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

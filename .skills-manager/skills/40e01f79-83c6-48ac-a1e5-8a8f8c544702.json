@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "40e01f79-83c6-48ac-a1e5-8a8f8c544702",
+  "path": "asdd-frd-review",
+  "path_key": "asdd-frd-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

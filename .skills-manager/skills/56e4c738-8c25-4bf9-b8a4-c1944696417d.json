@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "56e4c738-8c25-4bf9-b8a4-c1944696417d",
+  "path": "asdd-e2etest-playwright-run",
+  "path_key": "asdd-e2etest-playwright-run",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

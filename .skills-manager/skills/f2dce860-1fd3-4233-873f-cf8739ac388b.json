@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "f2dce860-1fd3-4233-873f-cf8739ac388b",
+  "path": "asdd-e2etest-playwright-targets",
+  "path_key": "asdd-e2etest-playwright-targets",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

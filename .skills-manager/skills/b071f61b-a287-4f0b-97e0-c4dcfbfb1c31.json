@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "b071f61b-a287-4f0b-97e0-c4dcfbfb1c31",
+  "path": "asdd-detailed-design-generate",
+  "path_key": "asdd-detailed-design-generate",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

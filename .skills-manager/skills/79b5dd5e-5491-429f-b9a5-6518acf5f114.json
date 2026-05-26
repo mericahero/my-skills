@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "79b5dd5e-5491-429f-b9a5-6518acf5f114",
+  "path": "playwright-cli",
+  "path_key": "playwright-cli",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "9f04cf9c-912c-4954-8921-a93e7f517ae9",
+  "path": "asdd-e2etest-playwright-generate",
+  "path_key": "asdd-e2etest-playwright-generate",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

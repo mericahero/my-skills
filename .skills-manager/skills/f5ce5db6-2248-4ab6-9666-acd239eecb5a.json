@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "f5ce5db6-2248-4ab6-9666-acd239eecb5a",
+  "path": "asdd-workbench-overview",
+  "path_key": "asdd-workbench-overview",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

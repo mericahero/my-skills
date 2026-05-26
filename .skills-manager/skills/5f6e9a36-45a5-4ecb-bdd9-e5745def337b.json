@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "5f6e9a36-45a5-4ecb-bdd9-e5745def337b",
+  "path": "oh-my-asdd-guid",
+  "path_key": "oh-my-asdd-guid",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

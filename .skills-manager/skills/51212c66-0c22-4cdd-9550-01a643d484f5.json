@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "51212c66-0c22-4cdd-9550-01a643d484f5",
+  "path": "asdd-bug-diagnose",
+  "path_key": "asdd-bug-diagnose",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

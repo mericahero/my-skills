@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "3af1c8c9-a024-4302-aba6-4b36bfb98eec",
+  "path": "asdd-detailed-design-review",
+  "path_key": "asdd-detailed-design-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

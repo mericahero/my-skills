@@ -1,0 +1,78 @@
+source_id: "{{REQ_OR_BUG_ID}}"
+runner: "playwright"
+base_url_env: "E2E_BASE_URL"
+
+framework_hints:
+  ui_library: "{{naive-ui | element-plus | ant-design-vue | vant | unknown}}"
+  input_method: "{{type | fill}}"
+  teleport_components:
+    - "{{Select | DatePicker | Modal | Cascader | 无}}"
+  disabled_detection: "{{css_class | attribute | aria}}"
+  disabled_css_pattern: "{{n-switch--disabled | is-disabled | ant-switch-disabled | 无}}"
+  dialog_role: "{{dialog | dialog-alert | 无}}"
+
+runtime_probe:
+  status: "{{verified | partial | not_run | blocked}}"
+  command_prefix: "{{playwright-cli | npx --no-install playwright-cli | unavailable}}"
+  session: "{{asdd-e2e 或其他 session 名}}"
+  base_url: "{{实际探测 URL 或未运行原因}}"
+  snapshots:
+    - route_key: "{{route_key}}"
+      file: "{{playwrightE2E/runtime-snapshot.yml 或 .playwright-cli 快照路径}}"
+      notes: "{{页面状态、登录态、弹窗/下拉是否已打开}}"
+  blocker: "{{无 或 服务未启动 / 缺账号 / 缺权限 / playwright-cli 不可用 / 其他}}"
+
+url_param_format:
+  query_params: "{{snake_case | camelCase | mixed}}"
+  body_params: "{{snake_case | camelCase | mixed}}"
+  evidence:
+    file: "{{来源文件：请求拦截器或 API 客户端}}"
+    example: "{{如 auth_source=local（非 authSource=local）}}"
+
+routes:
+  "{{route_key}}":
+    path: "{{路由路径}}"
+    source_file: "{{路由文件}}"
+    evidence: "{{代码证据}}"
+
+targets:
+  "{{target_id}}":
+    description: "{{可读的目标描述}}"
+    testability_contract:
+      source: "{{frontend-page-design.md §3 / frontend-detailed-design.md §5 / fast-design.md §4.4 / 无}}"
+      declared_testid: "{{设计声明的 data-testid 或无}}"
+      contract_status: "{{matched | missing_in_code | undocumented_in_design | invalid_naming | not_applicable}}"
+      naming_rule: "{module}-{surface}-{element}-{action}"
+    preferred:
+      kind: "role | label | text | testid | css"
+      role: "{{button | link | textbox | combobox | 可选}}"
+      name: "{{可访问名称（如有）}}"
+      value: "{{label/text/testid/css 值}}"
+    fallback:
+      - kind: "{{降级类型}}"
+        value: "{{降级值}}"
+    framework_note: "{{可选：如 Naive UI 下拉渲染在 teleport 中，需使用全局定位器}}"
+    runtime_probe:
+      status: "{{verified | partial | not_run | blocked}}"
+      ref: "{{playwright-cli snapshot ref，如 e5}}"
+      generated_locator: "{{playwright-cli --raw generate-locator e5 的结果}}"
+      snapshot_file: "{{快照文件路径}}"
+      attributes:
+        data_testid: "{{eval 结果或无}}"
+        aria_label: "{{eval 结果或无}}"
+        class: "{{关键 class 或无}}"
+      notes: "{{多匹配、条件渲染、teleport、遮挡等运行时发现}}"
+    source:
+      file: "{{来源文件}}"
+      evidence: "{{精确代码事实（过长可概括）}}"
+    design_reference: "{{设计文档章节}}"
+    implementation_difference: "{{无 或 差异说明}}"
+
+assertion_targets:
+  "{{assertion_id}}":
+    kind: "url | text | role | response | storage | console"
+    value: "{{期望的可观察值}}"
+    url_param_actual: "{{实际参数名（如与设计不同），如 auth_source vs authSource}}"
+    source:
+      file: "{{来源文件或文档}}"
+      evidence: "{{证据}}"

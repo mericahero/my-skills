@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "8b9ba7c1-cda1-4ca0-845e-b78bddda76ae",
+  "path": "asdd-architecture-review",
+  "path_key": "asdd-architecture-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

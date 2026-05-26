@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "bc0c86c9-466c-41b4-a4c2-f2678c629cf6",
+  "path": "asdd-bug-fix-fast",
+  "path_key": "asdd-bug-fix-fast",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

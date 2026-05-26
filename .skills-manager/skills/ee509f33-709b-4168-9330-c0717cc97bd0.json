@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "ee509f33-709b-4168-9330-c0717cc97bd0",
+  "path": "asdd-bug-close",
+  "path_key": "asdd-bug-close",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

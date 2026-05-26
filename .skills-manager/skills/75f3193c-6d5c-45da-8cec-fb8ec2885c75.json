@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "75f3193c-6d5c-45da-8cec-fb8ec2885c75",
+  "path": "asdd-frd-generate",
+  "path_key": "asdd-frd-generate",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

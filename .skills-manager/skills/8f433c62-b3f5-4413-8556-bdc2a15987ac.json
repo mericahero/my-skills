@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "8f433c62-b3f5-4413-8556-bdc2a15987ac",
+  "path": "asdd-requirements-decompose",
+  "path_key": "asdd-requirements-decompose",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

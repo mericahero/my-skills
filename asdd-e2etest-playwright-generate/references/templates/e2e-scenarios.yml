@@ -1,0 +1,68 @@
+source_id: "{{REQ_OR_BUG_ID}}"
+runner: "playwright"
+base_url: "${E2E_BASE_URL}"
+config:
+  screenshot_on_failure: false
+  trace_on_failure: true
+  video: false
+  artifact_root: "playwrightE2E/artifacts/{run_id}"
+  screenshot_policy:
+    default: "disabled"
+    allowed_when:
+      - "failure_overview"
+      - "visual_contract"
+      - "layout_regression"
+      - "canvas_chart_pdf"
+      - "user_requested_evidence"
+    storage: "playwrightE2E/artifacts/{run_id}/screenshots/{scenario_id}-{step_id}.png"
+  console_error_policy: "遇到非预期错误则失败 | 白名单放行 | 不适用"
+  network_failure_policy: "遇到 4xx/5xx 则失败 | 白名单放行 | 按场景指定"
+  flake_check: "无 | 重复 2 次 | 重复 3 次 | 重复 5 次"
+  execution_mode: "串行 | 并行"
+  viewports:
+    - name: "桌面端"
+      size: "1280x720"
+    - name: "移动端"
+      size: "375x812"
+      optional: true
+  framework_adapter:
+    ui_library: "{{来自 e2e-target-map.yml framework_hints.ui_library}}"
+    input_method: "{{来自 e2e-target-map.yml framework_hints.input_method}}"
+    url_param_format: "{{来自 e2e-target-map.yml url_param_format.query_params}}"
+scenarios:
+  - id: "{{场景编号}}"
+    title: "{{场景标题}}"
+    priority: "P0 | P1 | P2"
+    type: "正常路径 | 负向路径 | 回归 | 权限 | 边界"
+    route: "{{路由 key 或路径}}"
+    goals:
+      - "{{来自 e2e-test-design.md 的目标编号}}"
+    preconditions:
+      - "{{前置条件编号或描述}}"
+    steps:
+      - action: "goto"
+        target: "{{路由 key}}"
+      - action: "login"
+        target: "admin"
+      - action: "fill | nfill | click | select | nselect | press | wait_for_response"
+        target: "{{来自 e2e-target-map.yml 的目标编号}}"
+        value: "{{环境变量值或字面量}}"
+        locator_source: "{{runtime_probe | target_map | fallback}}"
+        framework_note: "{{可选：框架特殊行为说明}}"
+    assertions:
+      - kind: "url_contains | text_visible | role_visible | response_ok | storage_value | no_console_error | no_network_failure | keyboard_reachable | accessible_name"
+        target: "{{断言目标编号或字面量}}"
+        value: "{{期望值}}"
+        url_param_actual: "{{实际参数名（如与设计不同），如 auth_source vs authSource}}"
+    data_strategy:
+      unique_fields: ["{{必须动态生成的字段列表}}"]
+      cleanup: "api_delete | 手动 | 无"
+    artifacts:
+      default: "标准输出-json | playwright-json"
+      optional_on_failure:
+        - "trace"
+        - "screenshot"
+      screenshot:
+        enabled: false
+        reason: "failure_overview | visual_contract | layout_regression | canvas_chart_pdf | user_requested_evidence | 无"
+        path: "playwrightE2E/artifacts/{run_id}/screenshots/{scenario_id}-{step_id}.png"

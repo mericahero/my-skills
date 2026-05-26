@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "d4f3ff75-0619-4a9c-af45-50050b35d21f",
+  "path": "asdd-tasks-implement",
+  "path_key": "asdd-tasks-implement",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "381fdfc0-0336-4b2b-94a6-ef4cf783b40e",
+  "path": "asdd-requirement-implement-fast",
+  "path_key": "asdd-requirement-implement-fast",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

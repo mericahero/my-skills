@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "87e80f21-d07e-48d6-9332-d3e22fda03b1",
+  "path": "asdd-tasks-review",
+  "path_key": "asdd-tasks-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "f7053401-ed8b-4fd5-a67e-ae55ab3cf20a",
+  "path": "asdd-e2etest-playwright-design",
+  "path_key": "asdd-e2etest-playwright-design",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

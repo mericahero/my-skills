@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "219e7b09-f501-47c9-9af2-47ce3cfb1e25",
+  "path": "asdd-merge-preflight",
+  "path_key": "asdd-merge-preflight",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "26fa451d-c30f-4dbb-89d6-a779c1c38951",
+  "path": "asdd-code-merge-resolve",
+  "path_key": "asdd-code-merge-resolve",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

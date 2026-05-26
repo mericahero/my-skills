@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "b0d243c1-8a07-41a8-9eab-a961066e23d7",
+  "path": "asdd-architecture-generate",
+  "path_key": "asdd-architecture-generate",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "9adbe2a9-78b5-4fa0-a7b5-fae15bdb7223",
+  "path": "asdd-rules-review",
+  "path_key": "asdd-rules-review",
+  "enabled": true,
+  "tags": [
+    "asdd"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
