@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "ed790999-b781-4b4d-9f7f-0d83a3fbde94",
+  "path": "test-driven-development-2",
+  "path_key": "test-driven-development-2",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/addyosmani/agent-skills",
+    "subpath": "skills\\test-driven-development",
+    "branch": null
+  }
+}

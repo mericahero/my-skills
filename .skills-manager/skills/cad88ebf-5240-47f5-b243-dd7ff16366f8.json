@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "cad88ebf-5240-47f5-b243-dd7ff16366f8",
+  "path": "excel-processor",
+  "path_key": "excel-processor",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

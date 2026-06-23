@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "9db6a17b-4bf7-4aec-9aaa-db62b397dc8a",
+  "path": "financial-researcher",
+  "path_key": "financial-researcher",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "02c96645-4eac-434d-9836-db5dd2963e24",
+  "path": "lark-task",
+  "path_key": "lark-task",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

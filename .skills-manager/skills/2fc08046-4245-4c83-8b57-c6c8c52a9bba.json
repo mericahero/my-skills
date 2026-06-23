@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "2fc08046-4245-4c83-8b57-c6c8c52a9bba",
+  "path": "db-dictionary",
+  "path_key": "db-dictionary",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

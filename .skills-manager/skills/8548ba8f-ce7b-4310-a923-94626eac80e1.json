@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "8548ba8f-ce7b-4310-a923-94626eac80e1",
+  "path": "verification-before-completion",
+  "path_key": "verification-before-completion",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/obra/superpowers",
+    "subpath": "skills\\verification-before-completion",
+    "branch": null
+  }
+}

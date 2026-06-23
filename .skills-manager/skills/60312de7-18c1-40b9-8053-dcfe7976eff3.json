@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "60312de7-18c1-40b9-8053-dcfe7976eff3",
+  "path": "finance-analyzer",
+  "path_key": "finance-analyzer",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
