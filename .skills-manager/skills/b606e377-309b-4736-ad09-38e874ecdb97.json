@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "skill_id": "fd0ea3bd-a4de-47d9-8ca3-8bfdf57f6092",
-  "path": "system-analyzer",
-  "path_key": "system-analyzer",
+  "skill_id": "b606e377-309b-4736-ad09-38e874ecdb97",
+  "path": "system-analyzer-prompts",
+  "path_key": "system-analyzer-prompts",
   "enabled": true,
   "tags": [
     "localgen"
   ],
   "source": {
-    "type": "import",
+    "type": "local",
     "ref": null,
     "subpath": null,
     "branch": null
