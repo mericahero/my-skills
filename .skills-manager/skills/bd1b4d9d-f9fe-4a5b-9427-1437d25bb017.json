@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "bd1b4d9d-f9fe-4a5b-9427-1437d25bb017",
+  "path": "comet-build",
+  "path_key": "comet-build",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

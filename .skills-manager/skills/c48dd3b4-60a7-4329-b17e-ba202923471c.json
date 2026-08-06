@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "c48dd3b4-60a7-4329-b17e-ba202923471c",
+  "path": "context-engineering-2",
+  "path_key": "context-engineering-2",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

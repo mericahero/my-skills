@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "1fe03b72-0ce8-41ae-8319-66450884d54a",
+  "path": "openspec-bulk-archive-change",
+  "path_key": "openspec-bulk-archive-change",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

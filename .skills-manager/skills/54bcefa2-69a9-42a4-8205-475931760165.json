@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "54bcefa2-69a9-42a4-8205-475931760165",
+  "path": "task-handoff-doc",
+  "path_key": "task-handoff-doc",
+  "enabled": true,
+  "tags": [
+    "localgen"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "dcd7a359-6fb9-4667-99ff-9d58175c38dc",
+  "path": "comet-tweak",
+  "path_key": "comet-tweak",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

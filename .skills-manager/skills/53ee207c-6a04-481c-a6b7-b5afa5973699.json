@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "53ee207c-6a04-481c-a6b7-b5afa5973699",
+  "path": "comet-hotfix",
+  "path_key": "comet-hotfix",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

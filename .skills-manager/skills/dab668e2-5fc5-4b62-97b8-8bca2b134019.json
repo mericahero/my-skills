@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "dab668e2-5fc5-4b62-97b8-8bca2b134019",
+  "path": "openspec-propose",
+  "path_key": "openspec-propose",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

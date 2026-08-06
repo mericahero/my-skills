@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "ca621e27-4d1c-4fc7-99a4-f6f4926e7623",
+  "path": "comet-design",
+  "path_key": "comet-design",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

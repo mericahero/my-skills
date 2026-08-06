@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "2e09eddf-47c9-4bc2-b1d4-12dd05c81d42",
+  "path": "openspec-continue-change",
+  "path_key": "openspec-continue-change",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

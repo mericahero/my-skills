@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "54b1e27b-b912-4252-9fc0-2455536cd097",
+  "path": "openspec-onboard",
+  "path_key": "openspec-onboard",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "ab2aa0ca-bab3-4917-9c3a-10d18ef4b065",
+  "path": "incremental-implementation-2",
+  "path_key": "incremental-implementation-2",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

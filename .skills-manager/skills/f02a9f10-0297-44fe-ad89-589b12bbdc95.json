@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f02a9f10-0297-44fe-ad89-589b12bbdc95",
+  "path": "comet-open",
+  "path_key": "comet-open",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

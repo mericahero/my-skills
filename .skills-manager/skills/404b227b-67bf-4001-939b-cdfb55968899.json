@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "404b227b-67bf-4001-939b-cdfb55968899",
+  "path": "openspec-sync-specs",
+  "path_key": "openspec-sync-specs",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

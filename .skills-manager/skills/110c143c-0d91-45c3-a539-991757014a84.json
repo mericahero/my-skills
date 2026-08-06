@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "110c143c-0d91-45c3-a539-991757014a84",
+  "path": "comet-verify",
+  "path_key": "comet-verify",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

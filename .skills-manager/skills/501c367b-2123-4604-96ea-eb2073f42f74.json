@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "501c367b-2123-4604-96ea-eb2073f42f74",
+  "path": "comet-archive",
+  "path_key": "comet-archive",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
