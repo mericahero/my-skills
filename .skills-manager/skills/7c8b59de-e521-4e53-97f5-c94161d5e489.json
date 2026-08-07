@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "7c8b59de-e521-4e53-97f5-c94161d5e489",
+  "path": "systematic-learning",
+  "path_key": "systematic-learning",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
