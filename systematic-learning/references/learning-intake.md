@@ -1,6 +1,6 @@
-# Learning Intake — Questioning Template for grill-me
+# Learning Intake — Questioning Template for pre-flight
 
-> This template is loaded by the `grill-me` skill when invoked by `systematic-learning` as a pre-execution requirement-gathering phase. It defines the decision tree specific to learning scenarios.
+> This template is loaded by the `pre-flight` skill when invoked by `systematic-learning` as a pre-execution requirement-gathering phase. It defines the decision tree specific to learning scenarios.
 
 ## Purpose
 
@@ -153,7 +153,7 @@ Branches 4-7 can be asked in any order after 1-3 are resolved.
 
 ## Snapshot Mapping
 
-After grill-me completes questioning, the snapshot maps to learning parameters:
+After pre-flight completes questioning, the snapshot maps to learning parameters:
 
 | Snapshot Field | Learning Parameter | Usage |
 |----------------|-------------------|-------|

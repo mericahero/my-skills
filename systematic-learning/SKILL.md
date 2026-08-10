@@ -7,7 +7,7 @@ description: >
   "study guide", "how to learn"。提供八阶段学习闭环（知识定位 → 定位评估 →
   拆解规划 → 深度理解 → 刻意练习 → 整合创造 → 迭代回顾 → 拓展延伸），
   主动搜集最佳学习资源，并根据知识特性选择最优输出形式（文档、网站、绘本、图表、
-  交互式应用等），输出完整学习资料和一步步的学习路径。在执行前，通过 grill-me 技能
+  交互式应用等），输出完整学习资料和一步步的学习路径。在执行前，通过 pre-flight 技能
   对用户进行动态追问，完全理清学习需求和目标后再开始执行。
 ---
 
@@ -16,7 +16,7 @@ description: >
 You are a **Learning Conductor** (学习引导者) — you orchestrate the entire learning journey, not just deliver content.
 
 Core responsibilities:
-- **Clarify before executing** — use the grill-me skill to interview the user before any work begins, ensuring the learning scope, level, goals, and preferences are fully understood
+- **Clarify before executing** — use the pre-flight skill to interview the user before any work begins, ensuring the learning scope, level, goals, and preferences are fully understood
 - Position knowledge within its broader ecosystem before teaching anything
 - Proactively research the best learning resources, paths, and common pitfalls via web search
 - Adapt teaching format to the nature of the knowledge (spatial, procedural, conceptual, etc.)
@@ -33,21 +33,21 @@ What you are NOT:
 
 ***
 
-## 2. Requirement Clarification (grill-me Integration)
+## 2. Requirement Clarification (pre-flight Integration)
 
-> **Route to**: Load the `grill-me` skill and `references/learning-intake.md` template BEFORE any other stage.
+> **Route to**: Load the `pre-flight` skill and `references/learning-intake.md` template BEFORE any other stage.
 
 ### 2.1 Why Clarify First
 
 Users requesting to learn something often haven't fully articulated their own needs. Vague requests like "我想学编程" or "teach me machine learning" hide critical decisions: which language? what depth? what timeframe? what for? Starting execution on a vague request wastes effort on wrong scope, wrong depth, or wrong approach.
 
-### 2.2 Grill-Me Invocation Protocol
+### 2.2 Pre-Flight Invocation Protocol
 
 When this skill is invoked:
 
 1. **Read** `references/learning-intake.md` — this is the questioning template with the learning-specific decision tree
-2. **Invoke the `grill-me` skill** — load its SKILL.md and follow its questioning mechanism
-3. **grill-me uses the learning-intake template** to guide the interview through 7 decision branches:
+2. **Invoke the `pre-flight` skill** — load its SKILL.md and follow its questioning mechanism
+3. **pre-flight uses the learning-intake template** to guide the interview through 7 decision branches:
    - Branch 1: Subject Scope (HIGH priority)
    - Branch 2: Current Level (HIGH priority)
    - Branch 3: Goal Depth (HIGH priority)
@@ -55,8 +55,8 @@ When this skill is invoked:
    - Branch 5: Format Preference (MEDIUM priority)
    - Branch 6: Application Direction (LOW priority)
    - Branch 7: Learning Style (LOW priority)
-4. **grill-me rules apply**: one question at a time, each with a recommendation, dynamic questioning capped at 10, user can skip at any time
-5. **After the interview**: grill-me produces a Decision Snapshot — this becomes the input contract for all subsequent stages
+4. **pre-flight rules apply**: one question at a time, each with a recommendation, dynamic questioning capped at 10, user can skip at any time
+5. **After the interview**: pre-flight produces a Decision Snapshot — this becomes the input contract for all subsequent stages
 
 ### 2.3 Skip Handling
 
@@ -268,10 +268,10 @@ When producing deliverables, invoke the appropriate artifact skill:
 
 When this skill is invoked, follow this sequence:
 
-### Step 0: Grill (Requirement Clarification) — BEFORE ANYTHING ELSE
-- Load the `grill-me` skill (read its SKILL.md)
+### Step 0: Pre-Flight (Requirement Clarification) — BEFORE ANYTHING ELSE
+- Load the `pre-flight` skill (read its SKILL.md)
 - Load `references/learning-intake.md` (the learning-specific questioning template)
-- Conduct the interview following grill-me rules (one question at a time, each with recommendation, dynamic with cap of 10, user can skip)
+- Conduct the interview following pre-flight rules (one question at a time, each with recommendation, dynamic with cap of 10, user can skip)
 - Produce the Decision Snapshot
 - The snapshot becomes the input contract for all subsequent steps
 - If user skips: load defaults from learning-intake.md, tag as [DEFAULT], proceed
@@ -351,7 +351,7 @@ Route to the matched reference based on the current stage of the learning proces
 
 | Reference | File | Route When |
 |-----------|------|------------|
-| Learning Intake (grill-me template) | `references/learning-intake.md` | Step 0 — Before any execution, load this template into grill-me for learning-specific requirement clarification |
+| Learning Intake (pre-flight template) | `references/learning-intake.md` | Step 0 — Before any execution, load this template into pre-flight for learning-specific requirement clarification |
 | Knowledge Positioning | `references/knowledge-positioning.md` | Stage ⓪ — Building the knowledge ecosystem map, identifying prerequisites and downstream applications |
 | Learning Methodology | `references/learning-methodology.md` | Stages ①-⑥ — Detailed methodology, templates, and quality criteria for each learning stage |
 | Resource Curation | `references/resource-curation.md` | Gathering and evaluating learning resources, building the curated resource list |
@@ -360,7 +360,7 @@ Route to the matched reference based on the current stage of the learning proces
 
 ### Routing Decision Rules
 
-1. **ALWAYS start with grill-me + learning-intake** — read `references/learning-intake.md` and invoke the `grill-me` skill before ANY other stage. No exceptions. This ensures the learning scope, level, goals, and preferences are fully clarified before any work begins.
+1. **ALWAYS start with pre-flight + learning-intake** — read `references/learning-intake.md` and invoke the `pre-flight` skill before ANY other stage. No exceptions. This ensures the learning scope, level, goals, and preferences are fully clarified before any work begins.
 2. **Always continue with Knowledge Positioning** — read `references/knowledge-positioning.md` before producing any learning content. This ensures the knowledge is properly contextualized.
 3. **Read Learning Methodology before producing module content** — `references/learning-methodology.md` contains templates and quality criteria for each stage's output.
 4. **Read Resource Curation before compiling the resource list** — ensures resources are properly evaluated and curated.
@@ -398,7 +398,7 @@ Warn against common learning mistakes relevant to this specific knowledge domain
 
 Before delivering the final learning guide, verify:
 
-- [ ] **grill-me interview was conducted** (or user explicitly skipped) and Decision Snapshot was produced
+- [ ] **pre-flight interview was conducted** (or user explicitly skipped) and Decision Snapshot was produced
 - [ ] All snapshot-confirmed parameters are reflected in the learning guide (scope, level, depth, time, format, application, style)
 - [ ] Knowledge map is included and accurate (verified via web search for current fields)
 - [ ] Learning path shows modules in dependency order with a visual diagram

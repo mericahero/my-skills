@@ -1,12 +1,12 @@
 ---
-name: grill-me
+name: pre-flight
 description: >
   Socratic requirement clarification skill. Interview the user one question
   at a time, each with a recommended answer, until their intent is fully
   understood — then output a decision snapshot before any execution begins.
   Activate when the user's request is vague, has unspoken assumptions, or
   before starting any complex task (learning, building, planning) where
-  premature convergence is a risk. Trigger keywords: "grill me", "追问",
+  premature convergence is a risk. Trigger keywords: "pre-flight", "追问",
   "先问我问题", "clarify", "帮我理清需求", "ask me first". Can be invoked
   by other skills as a pre-execution requirement-gathering phase.
 ---
@@ -234,17 +234,17 @@ Next Step:
 
 ### 7.1 Being Invoked by Another Skill
 
-When another skill (e.g., `systematic-learning`) invokes grill-me as a pre-execution phase:
+When another skill (e.g., `systematic-learning`) invokes pre-flight as a pre-execution phase:
 
 1. The calling skill provides a **questioning template** (decision tree specific to its domain)
 2. Load the template from the calling skill's `references/` directory
 3. Use the template's decision tree as the questioning roadmap
-4. Still apply all grill-me rules (one at a time, recommendations, cap, skip)
+4. Still apply all pre-flight rules (one at a time, recommendations, cap, skip)
 5. After the snapshot, return control to the calling skill
 
 ### 7.2 Standalone Usage
 
-When a user directly invokes grill-me (not via another skill):
+When a user directly invokes pre-flight (not via another skill):
 
 1. Analyze the user's request to identify the decision tree
 2. Construct the questioning roadmap from the request itself

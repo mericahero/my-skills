@@ -1,10 +1,12 @@
 {
   "schema_version": 1,
-  "skill_id": "8316f7fd-2ad2-4c3a-8dc1-8b754eb524ea",
+  "skill_id": "f53f9cf6-bbd1-4dd2-8fdf-d48dba043516",
   "path": "systematic-learning",
   "path_key": "systematic-learning",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "localgen"
+  ],
   "source": {
     "type": "local",
     "ref": null,

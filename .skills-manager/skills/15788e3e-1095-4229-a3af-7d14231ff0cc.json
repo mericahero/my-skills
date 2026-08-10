@@ -1,10 +1,12 @@
 {
   "schema_version": 1,
-  "skill_id": "94d1b648-e0fd-4612-93ed-214725e8fd4f",
-  "path": "grill-me",
-  "path_key": "grill-me",
+  "skill_id": "15788e3e-1095-4229-a3af-7d14231ff0cc",
+  "path": "pre-flight",
+  "path_key": "pre-flight",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "localgen"
+  ],
   "source": {
     "type": "local",
     "ref": null,
