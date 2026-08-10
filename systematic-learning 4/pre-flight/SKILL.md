@@ -1,14 +1,40 @@
 ---
 name: pre-flight
+version: 1.0.0
+license: MIT
 description: >
-  Socratic requirement clarification skill. Interview the user one question
+  Socratic requirement clarification skill — interview the user one question
   at a time, each with a recommended answer, until their intent is fully
-  understood — then output a decision snapshot before any execution begins.
-  Activate when the user's request is vague, has unspoken assumptions, or
-  before starting any complex task (learning, building, planning) where
-  premature convergence is a risk. Trigger keywords: "pre-flight", "追问",
-  "先问我问题", "clarify", "帮我理清需求", "ask me first". Can be invoked
-  by other skills as a pre-execution requirement-gathering phase.
+  understood, then output a decision snapshot before any execution begins.
+  Prevents premature convergence where AI makes unconfirmed decisions on
+  vague requests. Use when user's request is vague, has unspoken assumptions,
+  or before starting any complex task where wrong assumptions are costly.
+  Trigger keywords: "pre-flight", "追问", "先问我问题", "clarify",
+  "帮我理清需求", "ask me first", "question me", "interview me".
+  Do NOT use for: simple tasks with clear requirements, single-step actions,
+  or when user explicitly says "just do it" without clarification.
+  Can be invoked by other skills as a pre-execution requirement-gathering phase.
+metadata:
+  author: ""
+  version: 1.0.0
+  tags: [clarification, requirements, socratic, interview, planning]
+---
+
+## 0. Interface Specification
+
+### Input
+- User's request (natural language, any domain)
+- Optional: a questioning template from the calling skill (e.g., `references/learning-intake.md`)
+- If no template provided → construct questioning roadmap from the request itself
+
+### Output
+- A Decision Snapshot containing: problem statement, confirmed decisions, default decisions, open items, assumptions, and next step
+- The snapshot is returned to the calling skill or presented to the user as the execution contract
+
+### On Failure
+- If user gives vague answers 3+ times on the same question → mark as "open", move on, do not loop
+- If user skips the entire interview → fill all parameters with sensible defaults, tag as "[DEFAULT]", proceed to snapshot
+- If no questioning template is available from the calling skill → construct questions from the request's decision tree using own judgment
 ---
 
 ## 1. Role Definition

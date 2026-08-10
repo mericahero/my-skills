@@ -1,14 +1,44 @@
 ---
 name: systematic-learning
+version: 1.0.0
+license: MIT
 description: >
-  系统学习法 — 适用于学习任何知识领域的元学习技能。当用户想系统学习某项知识、技能、
-  技术或领域时激活。Trigger keywords: "系统学习", "我想学", "教我", "学习路径",
-  "怎么学", "从零开始学", "systematically learn", "learning path", "teach me",
-  "study guide", "how to learn"。提供八阶段学习闭环（知识定位 → 定位评估 →
-  拆解规划 → 深度理解 → 刻意练习 → 整合创造 → 迭代回顾 → 拓展延伸），
-  主动搜集最佳学习资源，并根据知识特性选择最优输出形式（文档、网站、绘本、图表、
-  交互式应用等），输出完整学习资料和一步步的学习路径。在执行前，通过 pre-flight 技能
-  对用户进行动态追问，完全理清学习需求和目标后再开始执行。
+  Systematically learn ANY knowledge domain — from underlying principles to
+  practical mastery. Provides an 8-stage learning cycle: knowledge positioning,
+  self-assessment, decomposition, deep understanding, deliberate practice,
+  integration, review, and extension. Proactively researches best learning
+  resources via web search, selects optimal output format (document, website,
+  chart, interactive app, picture book), and produces complete learning
+  materials with step-by-step guidance. Clarifies requirements via pre-flight
+  interview before execution. Use when user says: "系统学习", "我想学",
+  "教我", "学习路径", "怎么学", "从零开始学", "系统学", "全面掌握",
+  "teach me", "learning path", "study guide", "how to learn", "I want to
+  master", "help me learn", "从原理到实践". Do NOT use for: single factual
+  lookups, simple code generation, or tasks unrelated to learning a knowledge
+  domain.
+metadata:
+  author: ""
+  version: 1.0.0
+  tags: [learning, education, study, methodology, meta-learning]
+  dependencies: [pre-flight]
+---
+
+## 0. Interface Specification
+
+### Input
+- User's learning request (natural language, any subject domain)
+- Optional: current level, time budget, format preference, application goal
+- If inputs are incomplete → triggers pre-flight interview to clarify
+
+### Output
+- A comprehensive learning guide (HTML report by default, or user-specified format)
+- Contains: knowledge map, learning path, module content, exercises, capstone project, resource list, extension paths, review schedule
+- Saved to `/workspace/` as a self-contained deliverable
+
+### On Failure
+- If WebSearch fails or returns insufficient results → use training knowledge, tag content as "[unverified — verify with latest sources]"
+- If user's subject is too broad even after pre-flight → narrow to the most foundational sub-area, state the assumption, proceed
+- If output format skill fails → fall back to plain Markdown output, notify user
 ---
 
 ## 1. Role Definition

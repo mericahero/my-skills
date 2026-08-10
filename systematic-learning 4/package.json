@@ -1,0 +1,29 @@
+{
+  "name": "systematic-learning-skills",
+  "version": "1.0.0",
+  "description": "A meta-learning skill system for AI coding agents — systematically learn ANY knowledge domain with an 8-stage learning cycle, proactive resource gathering, and multi-format output.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "skill",
+    "ai",
+    "learning",
+    "education",
+    "claude-code",
+    "trae",
+    "cursor",
+    "meta-learning",
+    "socratic",
+    "requirement-clarification"
+  ],
+  "skills": [
+    "systematic-learning",
+    "pre-flight"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

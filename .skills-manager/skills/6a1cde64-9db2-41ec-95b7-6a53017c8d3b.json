@@ -1,12 +1,10 @@
 {
   "schema_version": 1,
-  "skill_id": "15788e3e-1095-4229-a3af-7d14231ff0cc",
-  "path": "pre-flight",
-  "path_key": "pre-flight",
+  "skill_id": "6a1cde64-9db2-41ec-95b7-6a53017c8d3b",
+  "path": "systematic-learning 4",
+  "path_key": "systematic-learning 4",
   "enabled": true,
-  "tags": [
-    "localgen"
-  ],
+  "tags": [],
   "source": {
     "type": "local",
     "ref": null,
