@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "skill_id": "51117158-4d8b-4170-8542-20bb64569459",
-  "path": "idea-refine-2",
-  "path_key": "idea-refine-2",
+  "skill_id": "94d1b648-e0fd-4612-93ed-214725e8fd4f",
+  "path": "grill-me",
+  "path_key": "grill-me",
   "enabled": true,
   "tags": [],
   "source": {
-    "type": "import",
+    "type": "local",
     "ref": null,
     "subpath": null,
     "branch": null
