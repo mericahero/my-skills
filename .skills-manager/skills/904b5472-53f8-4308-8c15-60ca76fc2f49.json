@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "904b5472-53f8-4308-8c15-60ca76fc2f49",
+  "path": "systematic-learning",
+  "path_key": "systematic-learning",
+  "enabled": true,
+  "tags": [
+    "localgen"
+  ],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/mericahero/agent-skills",
+    "subpath": "skills\\systematic-learning",
+    "branch": null
+  }
+}
