@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "d8f967ed-bce0-4834-86d1-22ae3e05094d",
+  "path": "invoice-to-word",
+  "path_key": "invoice-to-word",
+  "enabled": true,
+  "tags": [
+    "localgen"
+  ],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
