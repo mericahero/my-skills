@@ -6,9 +6,9 @@
   "enabled": true,
   "tags": [],
   "source": {
-    "type": "skillssh",
-    "ref": "mattpocock/skills/grill-with-docs",
-    "subpath": "skills\\engineering\\grill-with-docs",
-    "branch": null
+    "type": "git",
+    "ref": "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs",
+    "subpath": "skills/engineering/grill-with-docs",
+    "branch": "main"
   }
 }
