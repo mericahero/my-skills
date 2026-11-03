@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "593263b7-cce1-46a1-9914-0537e77a7751",
+  "path": "karpathy-llm-wiki",
+  "path_key": "karpathy-llm-wiki",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "astro-han/karpathy-llm-wiki/karpathy-llm-wiki",
+    "subpath": null,
+    "branch": null
+  }
+}
