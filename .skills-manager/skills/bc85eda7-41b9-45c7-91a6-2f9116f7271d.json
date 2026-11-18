@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "bc85eda7-41b9-45c7-91a6-2f9116f7271d",
+  "path": "api-to-mcp",
+  "path_key": "api-to-mcp",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "local",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

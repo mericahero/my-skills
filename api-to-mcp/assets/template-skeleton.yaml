@@ -1,0 +1,525 @@
+# ============================================================
+# 模板 1：多租户透传模式（推荐）
+# 客户端凭证透传到后端，支持多用户
+# ============================================================
+
+server:
+  name: "your-service-name"          # 必填：服务名称（小写 + 连字符）
+  type: "rest"                        # 可选，默认 rest
+  timeout: 36000                      # 超时时间（毫秒）
+  config:                             # 可选：服务端配置
+    apiKey: "your-api-key"
+  # passthroughAuthHeader: false      # 是否透传 Authorization 请求头（默认 false）
+  securitySchemes:                    # 认证方案定义
+    - id: YourAuthScheme              # 认证方案 ID
+      type: apiKey                    # 类型：apiKey / http
+      in: header                      # apiKey 位置：header / query
+      name: "Your-Token-Header"       # 请求头名称或查询参数名
+      # defaultCredential: "xxx"      # 默认凭证（静态模式用）
+  defaultDownstreamSecurity:          # 客户端到网关认证
+    id: YourAuthScheme
+    passthrough: true                 # 多租户：设为 true
+  # defaultUpstreamSecurity:          # 静态模式：用这个替代
+  #   id: YourAuthScheme
+
+tools:
+  # ========== 查询/列表工具 ==========
+  - name: "list_resources"
+    description: "分页查询资源列表"
+    args:
+      - name: search
+        description: "搜索关键词"
+        type: string
+        required: false
+      - name: page
+        description: "页码"
+        type: integer
+        required: false
+        default: 1
+        position: query
+      - name: per_page
+        description: "每页条数"
+        type: integer
+        required: false
+        default: 20
+        position: query
+    requestTemplate:
+      method: GET
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/resources?page={{.args.page}}&per_page={{.args.per_page}}"
+      headers:
+        - key: Content-Type
+          value: application/json
+    responseTemplate:
+      body: |
+        # 资源列表
+        当前页: {{.meta.current_page}}
+        总数: {{.meta.total_count}}
+        {{range $idx, $item := .data}}
+        ### 资源 {{add $idx 1}}
+        - ID: {{$item.id}}
+        - 名称: {{$item.name}}
+        {{end}}
+
+  # ========== 创建工具 ==========
+  - name: "create_resource"
+    description: "创建新资源"
+    args:
+      - name: name
+        description: "资源名称"
+        type: string
+        required: true
+      - name: description
+        description: "资源描述"
+        type: string
+        required: false
+    requestTemplate:
+      method: POST
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/resources"
+      headers:
+        - key: Content-Type
+          value: application/json
+      body: |
+        {
+          "name": "{{.args.name}}",
+          "description": "{{.args.description}}"
+        }
+    responseTemplate:
+      body: |
+        # 创建结果
+        资源 ID: {{.id}}
+        资源名称: {{.name}}
+        创建时间: {{.created_at}}
+
+  # ========== 路径参数工具 ==========
+  - name: "get_resource_detail"
+    description: "根据 ID 查询单个资源详情"
+    args:
+      - name: resource_id
+        description: "资源 ID"
+        type: string
+        required: true
+        position: path
+    requestTemplate:
+      method: GET
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/resources/{{.args.resource_id}}"
+    responseTemplate:
+      body: |
+        # 资源详情
+        ID: {{.id}}
+        名称: {{.name}}
+        状态: {{.status}}
+        {{if .metadata}}
+        ## 扩展信息
+        {{range $key, $value := .metadata}}
+        - {{$key}}: {{$value}}
+        {{end}}
+        {{end}}
+
+  # ========== 对比工具（含错误处理） ==========
+  - name: "compare_resources"
+    description: "对比两个资源并返回差异"
+    args:
+      - name: from_id
+        description: "基准资源 ID"
+        type: string
+        required: true
+      - name: to_id
+        description: "目标资源 ID"
+        type: string
+        required: true
+    errorResponseTemplate: |-
+      HTTP 状态码: {{gjson "_headers.\\:status"}}
+      资源对比失败，请检查参数。
+    requestTemplate:
+      method: GET
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/resources/compare?from={{.args.from_id}}&to={{.args.to_id}}"
+    responseTemplate:
+      body: |-
+        # 对比结果
+        差异数: {{len .diffs}}
+        {{range $item := .diffs}}
+        ---
+        字段: {{$item.field}}
+        旧值: {{$item.old_value}}
+        新值: {{$item.new_value}}
+        {{end}}
+
+  # ========== 无参数工具 ==========
+  - name: "get_system_info"
+    description: "获取系统基本信息"
+    args: []
+    requestTemplate:
+      method: GET
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/system/info"
+    responseTemplate:
+      body: |
+        # 系统信息
+        版本: {{.version}}
+        运行时间: {{.uptime}}
+        状态: {{.status}}
+
+  # ========== 嵌套对象参数工具 ==========
+  - name: "search_resources"
+    description: "使用过滤条件搜索资源"
+    args:
+      - name: filters
+        description: "过滤条件"
+        type: object
+        required: false
+        properties:
+          category:
+            type: string
+            enum: ["food", "hotel", "attraction"]
+          price:
+            type: integer
+      - name: coordinates
+        description: "坐标点列表"
+        type: array
+        items:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+    requestTemplate:
+      method: POST
+      security:
+        id: YourAuthScheme
+      url: "http://your-api-host/api/v1/resources/search"
+      headers:
+        - key: Content-Type
+          value: application/json
+      body: |
+        {
+          "filters": {{toJson .args.filters}},
+          "coordinates": {{toJson .args.coordinates}}
+        }
+    responseTemplate:
+      body: |
+        # 搜索结果
+        总数: {{.total}}
+        {{range $idx, $item := .data}}
+        ### 结果 {{add $idx 1}}
+        - ID: {{$item.id}}
+        - 名称: {{$item.name}}
+        {{end}}
+
+# ============================================================
+# 模板 2：静态用户模式（简化版）
+# 所有请求使用同一固定凭证
+# ============================================================
+
+# server:
+#   name: "your-service-name"
+#   type: "rest"
+#   timeout: 36000
+#   securitySchemes:
+#     - id: YourAuthScheme
+#       type: apiKey
+#       in: header
+#       name: "Your-Token-Header"
+#       defaultCredential: "your-fixed-token"
+#   defaultUpstreamSecurity:
+#     id: YourAuthScheme
+#
+# tools:
+#   - name: "your_tool_name"
+#     description: "工具描述"
+#     args:
+#       - name: param1
+#         description: "参数描述"
+#         type: string
+#         required: true
+#     requestTemplate:
+#       method: GET
+#       url: "http://your-api-host/api/v1/endpoint?param1={{.args.param1}}"
+#       headers:
+#         - key: Content-Type
+#           value: application/json
+#     responseTemplate:
+#       body: |
+#         # 结果
+#         字段1: {{.field1}}
+#         字段2: {{.field2}}
+
+# ============================================================
+# 模板 3：单工具片段（用于增量添加）
+# ============================================================
+
+# - name: "new_tool_name"
+#   description: "新工具描述"
+#   args:
+#     - name: param1
+#       description: "参数描述"
+#       type: string
+#       required: true
+#       position: path
+#     - name: param2
+#       description: "参数描述"
+#       type: integer
+#       required: false
+#       default: 10
+#       position: query
+#   requestTemplate:
+#     method: GET
+#     security:
+#       id: YourAuthScheme
+#     url: "http://your-api-host/api/v1/resources/{{.args.param1}}?limit={{.args.param2}}"
+#     headers:
+#       - key: Content-Type
+#         value: application/json
+#   responseTemplate:
+#     body: |-
+#       # 查询结果
+#       总数: {{.total}}
+#       {{range $idx, $item := .data}}
+#       ### 记录 {{add $idx 1}}
+#       - ID: {{$item.id}}
+#       - 名称: {{$item.name}}
+#       {{end}}
+
+# ============================================================
+# 模板 4：含固定值参数的工具
+# ============================================================
+
+# - name: "create_pr_note"
+#   description: "给合并请求新增评论"
+#   args:
+#     - name: project_id
+#       description: "仓库 ID"
+#       type: string
+#       required: true
+#       position: path
+#     - name: merge_request_iid
+#       description: "合并请求 IID"
+#       type: string
+#       required: true
+#       position: path
+#     - name: note
+#       description: "评论内容"
+#       type: string
+#       required: true
+#     - name: noteable_type
+#       description: "固定值：PullRequest"
+#       type: string
+#       required: true
+#   requestTemplate:
+#     method: POST
+#     security:
+#       id: YourAuthScheme
+#     url: "http://your-api-host/api/v1/projects/{{.args.project_id}}/merge_requests/{{.args.merge_request_iid}}/notes"
+#     headers:
+#       - key: Content-Type
+#         value: application/json
+#     body: |
+#       {
+#         "note": "{{.args.note}}",
+#         "noteable_type": "{{.args.noteable_type}}"
+#       }
+#   responseTemplate:
+#     body: |
+#       # 评论已创建
+#       评论 ID: {{.id}}
+#       作者: {{.author.name}}
+#       内容: {{.note}}
+#       创建时间: {{.created_at}}
+
+# ============================================================
+# 模板 5：prependBody 模式（保留原始 JSON + 字段说明）
+# ============================================================
+
+# - name: "get_product_info"
+#   description: "获取产品详细信息"
+#   args:
+#     - name: product_id
+#       description: "产品 ID"
+#       type: string
+#       required: true
+#       position: path
+#   requestTemplate:
+#     method: GET
+#     security:
+#       id: YourAuthScheme
+#     url: "http://your-api-host/api/v1/products/{{.args.product_id}}"
+#   responseTemplate:
+#     prependBody: |
+#       # 产品信息
+#
+#       以下是产品详情的 JSON 格式数据。字段说明：
+#
+#       - **id**: 产品唯一标识
+#       - **name**: 产品名称
+#       - **price**: 产品价格（美元）
+#       - **category**: 产品分类
+#       - **inventory**: 库存信息
+#         - **quantity**: 当前库存数量
+#         - **warehouse**: 仓库位置
+#
+#       原始 JSON 响应：
+#
+#     appendBody: |
+#
+#       请使用以上信息了解产品详情、定价和库存状态。
+
+# ============================================================
+# 模板 6：MCP 代理模式 - StreamableHTTP 协议
+# 代理到后端 MCP 服务器
+# ============================================================
+
+# server:
+#   name: "my-mcp-proxy"
+#   type: "mcp-proxy"
+#   transport: "http"                 # StreamableHTTP 协议
+#   mcpServerURL: "http://backend-mcp.example.com/mcp"
+#   timeout: 5000
+#   defaultDownstreamSecurity:          # 客户端到网关认证
+#     id: ClientApiKey
+#   defaultUpstreamSecurity:            # 网关到后端认证
+#     id: BackendApiKey
+#   securitySchemes:
+#     - id: ClientApiKey
+#       type: apiKey
+#       in: header
+#       name: "X-Client-API-Key"
+#     - id: BackendApiKey
+#       type: apiKey
+#       in: header
+#       name: "X-Backend-API-Key"
+#       defaultCredential: "backend-secret-key"
+#   # tools 配置可选，不配置则代理所有后端工具
+#   # tools:
+#   #   - name: specific-tool
+#   #     description: "特定工具配置"
+#   #     security:
+#   #       id: ClientApiKey
+#   #       passthrough: false
+#   #     requestTemplate:
+#   #       security:
+#   #         id: BackendApiKey
+#   #         credential: "special-key-for-this-tool"
+
+# ============================================================
+# 模板 7：MCP 代理模式 - SSE 协议
+# 流式传输，支持实时消息推送
+# ============================================================
+
+# server:
+#   name: "my-sse-mcp-proxy"
+#   type: "mcp-proxy"
+#   transport: "sse"                  # SSE 协议
+#   mcpServerURL: "http://backend-mcp.example.com"
+#   timeout: 10000                     # SSE 建议用更长超时
+#   defaultDownstreamSecurity:
+#     id: ClientBearer
+#   defaultUpstreamSecurity:
+#     id: BackendBearer
+#   securitySchemes:
+#     - id: ClientBearer
+#       type: http
+#       scheme: bearer
+#     - id: BackendBearer
+#       type: http
+#       scheme: bearer
+#       defaultCredential: "backend-bearer-token"
+#
+# allowTools:                          # 可选：限制允许的工具
+#   - tool1
+#   - tool2
+
+# ============================================================
+# 模板 8：高德地图 API 示例（argsToUrlParam + config 引用）
+# ============================================================
+
+# server:
+#   name: "rest-amap-server"
+#   config:
+#     apiKey: "your-amap-api-key"
+# tools:
+#   - name: "maps_geo"
+#     description: "将详细的结构化地址转换为经纬度坐标"
+#     args:
+#       - name: address
+#         description: "待解析的结构化地址信息"
+#         type: string
+#         required: true
+#       - name: city
+#         description: "指定查询的城市"
+#         type: string
+#         required: false
+#     requestTemplate:
+#       url: "https://restapi.amap.com/v3/geocode/geo"
+#       method: GET
+#       argsToUrlParam: true
+#       headers:
+#         - key: x-api-key
+#           value: "{{.config.apiKey}}"
+#     responseTemplate:
+#       body: |
+#         # 地理编码信息
+#         {{- range $index, $geo := .geocodes }}
+#         ## 地点 {{add $index 1}}
+#         - **国家**: {{ $geo.country }}
+#         - **省份**: {{ $geo.province }}
+#         - **城市**: {{ $geo.city }}
+#         - **坐标**: {{ $geo.location }}
+#         - **级别**: {{ $geo.level }}
+#         {{- end }}
+
+# ============================================================
+# 模板 9：银行卡验证示例（errorResponseTemplate + appendBody 参数说明）
+# ============================================================
+
+# server:
+#   name: "bank-card-verify"
+#   config:
+#     appCode: ""
+# tools:
+#   - name: "verify_bank_card"
+#     description: "验证卡号、姓名、手机号、证件号是否一致"
+#     args:
+#       - name: cardno
+#         description: "银行卡号"
+#         type: string
+#         required: true
+#         position: query
+#       - name: name
+#         description: "姓名（注意 UrlEncode 编码）"
+#         type: string
+#         required: false
+#         position: query
+#       - name: mobile
+#         description: "预留手机号"
+#         type: string
+#         required: false
+#         position: query
+#       - name: idcard
+#         description: "身份证号码"
+#         type: string
+#         required: false
+#         position: query
+#     errorResponseTemplate: |-
+#       statusCode: {{gjson "_headers.\\:status"}}
+#       errorCode: {{gjson "_headers.x-ca-error-code"}}
+#       data: {{.data.value}}
+#     requestTemplate:
+#       argsToUrlParam: true
+#       method: GET
+#       url: "https://ckid.market.alicloudapi.com/lundear/verifyBank"
+#     responseTemplate:
+#       appendBody: |2-
+#           - 以下是返回参数说明
+#           - 参数名称: code, 参数类型: integer, 参数描述: 响应状态码
+#           - 参数名称: desc, 参数类型: string, 参数描述: 描述信息
+#           - 参数名称: data.bankId, 参数类型: string, 参数描述: 银行编码
+#           - 参数名称: data.bankName, 参数类型: string, 参数描述: 银行名称
